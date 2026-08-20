@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Project Editor</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="app">
+  <header>
+    <h1>🛠️ AI Project Editor</h1>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab on" data-t="upload">📁 رفع</button>
+    <button class="tab" data-t="files">📂 ملفات</button>
+    <button class="tab" data-t="editor">✏️ محرر</button>
+    <button class="tab" data-t="ai">🤖 AI</button>
+    <button class="tab" data-t="settings">⚙️ إعدادات</button>
+  </nav>
+
+  <!-- UPLOAD -->
+  <section id="t-upload" class="panel on">
+    <div class="drop" id="dz">
+      <p style="font-size:3rem">📦</p>
+      <p>اسحب ZIP هنا أو اضغط</p>
+      <input type="file" id="fi" accept=".zip" hidden>
+      <button class="btn p" onclick="document.getElementById('fi').click()">اختيار ZIP</button>
+    </div>
+    <div id="us" class="st"></div>
+  </section>
+
+  <!-- FILES -->
+  <section id="t-files" class="panel">
+    <div class="row">
+      <h3>📂 <span id="fc">0</span> ملف</h3>
+      <div>
+        <button class="btn g" onclick="exp()">📥 تحميل ZIP</button>
+        <button class="btn r" onclick="rst()">🗑️ مسح</button>
+      </div>
+    </div>
+    <div id="ft" class="tree"></div>
+  </section>
+
+  <!-- EDITOR -->
+  <section id="t-editor" class="panel">
+    <div class="ed-grid">
+      <div class="ed-side" id="efl"></div>
+      <div class="ed-main">
+        <div class="ed-bar">
+          <span id="efn">اختر ملف</span>
+          <button class="btn p s" onclick="sav()">💾 حفظ</button>
+        </div>
+        <textarea id="ce" class="code"></textarea>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI -->
+  <section id="t-ai" class="panel">
+    <div class="ai-grid">
+      <div class="ai-side">
+        <label>🎯 الملف المستهدف</label>
+        <select id="tf"><option value="">كل المشروع</option></select>
+        <label>📝 النوع</label>
+        <select id="am">
+          <option value="edit">✏️ تعديل</option>
+          <option value="rewrite">🔄 إعادة كتابة</option>
+        </select>
+        <button class="btn w full" onclick="bk()">🚀 تعديل شامل</button>
+      </div>
+      <div class="ai-chat">
+        <div id="cm" class="msgs">
+          <div class="m a">ارفع مشروعك وابدأ 🚀</div>
+        </div>
+        <div class="cin">
+          <textarea id="ci" rows="3" placeholder="اكتب تعليماتك..."></textarea>
+          <button class="btn p" onclick="snd()">➤</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SETTINGS -->
+  <section id="t-settings" class="panel">
+    <h3>⚙️ الإعدادات - 3 شركات</h3>
+
+    <div class="set-card">
+      <h4>🔵 Google (Gemini)</h4>
+      <label>API Key</label>
+      <input type="password" id="gk" placeholder="AIza...">
+      <label>اسم النموذج (اكتبه بإيدك)</label>
+      <input type="text" id="gm" placeholder="مثال: gemini-2.0-flash">
+    </div>
+
+    <div class="set-card">
+      <h4>🟢 DeepSeek</h4>
+      <label>API Key</label>
+      <input type="password" id="dk" placeholder="sk-...">
+      <label>اسم النموذج (اكتبه بإيدك)</label>
+      <input type="text" id="dm" placeholder="مثال: deepseek-chat">
+    </div>
+
+    <div class="set-card">
+      <h4>🟣 Qwen (Alibaba)</h4>
+      <label>API Key</label>
+      <input type="password" id="qk" placeholder="sk-...">
+      <label>اسم النموذج (اكتبه بإيدك)</label>
+      <input type="text" id="qm" placeholder="مثال: qwen-max">
+    </div>
+
+    <div class="set-card">
+      <h4>🤖 الشركة النشطة</h4>
+      <select id="ap" class="full">
+        <option value="deepseek">DeepSeek</option>
+        <option value="google">Google</option>
+        <option value="qwen">Qwen</option>
+      </select>
+    </div>
+
+    <button class="btn p big" onclick="ss()">💾 حفظ الإعدادات</button>
+    <div id="ss" class="st"></div>
+  </section>
+</div>
+<script src="/static/app.js"></script>
+</body>
+</html>
